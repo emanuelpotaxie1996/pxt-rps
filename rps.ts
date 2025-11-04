@@ -28,7 +28,6 @@ namespace rps {
         let loses: number = 0;  
         let realWins: number = 0;  
         let draws: number = 0;  
-        let turn: boolean = true;
         basic.forever(() => {  
             if (turn && !(wins + loses === 6)) {  
                 showHand(hand);  
@@ -62,8 +61,9 @@ namespace rps {
             }  
         });  
         input.onButtonPressed(Button.B, () => {  
-            turn = false;  
-            cpu = Object.values(Hands)[randint(0, 2)];  
+            if (!(wins + loses === 6)) {
+                turn = false;  
+            cpu = Object.values(Hands)[randint(0, 2];  
             music.play(music.stringPlayable("C D E F", 120), music.PlaybackMode.UntilDone);  
             basic.pause(700);  
             showHand(cpu);  
@@ -106,7 +106,8 @@ namespace rps {
                     draws++;  
                 });  
             }  
-            turn = true;  
+            turn = true;
+            }
         });  
         function getWin(rock: () => void, paper: () => void, scissors: () => void): void {  
             if (cpu === Hands.Rock) {  
