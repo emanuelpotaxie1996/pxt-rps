@@ -7,6 +7,13 @@ namespace rps {
         Scissors = "##..#\n##.#.\n..#..\n##.#.\n##..#"
     }
     /**
+     * Mostra una mà, que pot ser una pedra, un paper o unes tisores
+     * @param hand mà a mostrar
+     */
+    export function showHand(hand: Hands): void {
+        basic.showLeds(hand);
+    }
+    /**
      * Inicia un joc de pedra, paper, tisores
      * Pedra guanya a tisores, paper guanya a pedra i tisores guanyen a paper.
      * Per seleccionar una mà, premi el botó A.
