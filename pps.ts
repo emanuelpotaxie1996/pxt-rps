@@ -3,7 +3,7 @@
 namespace pps {
     export enum Hands {
         //% block="Pedra"
-        Rock = ".....\n.###.\n.###.\n.###\n.....",
+        Rock = images.createImage(".....\n.###.\n.###.\n.###.\n....."),
         Paper = ".###.\n.###.\n.###.\n.###.\n.###.",
         //% block="Tisores"
         Scissors = "##..#\n##.#.\n..#..\n##.#.\n##..#"
@@ -16,13 +16,32 @@ namespace pps {
     export function showHand(hand: Hands): void {
         basic.showLeds(hand);
     }
+    export function startRadio(group: number): number {
+        radio.setGroup(group);
+        let hand: Hands = Hands.Rock;
+        let turn: number = 1;
+        basic.forever(() => {
+            if (turn === 1) {
+                pps.showHand(hand);
+            }
+        });
+        input.onButtonPressed(Button.A, () => {
+            if (turn === 1) {
+                if (hand == Hands.Rock) {
+                    hand = Hands.Paper;
+                } else if (hand == Hands.Paper) {
+                    
+                }
+            }
+        });
+    }
     /**
      * Inicia un joc de pedra, paper, tisores
      * Pedra guanya a tisores, paper guanya a pedra i tisores guanyen a paper.
      * Per seleccionar una mà, premi el botó A.
      * Per acceptar la mà seleccionada, premi el botó B.
      */
-    //% block="iniciar joc" weight=1
+    //% block="iniciar joc" weight=2
     export function start(): void {
         let hand: Hands = Hands.Rock;
         let cpu: Hands;
@@ -30,9 +49,10 @@ namespace pps {
         let loses: number = 0;
         let realWins: number = 0;
         let draws: number = 0;
+        let turn: boolean = true;
         basic.forever(() => {
             if (turn && !(wins + loses === 6)) {
-                showHand(hand);
+                pps.showHand(hand);
             }
             if (wins + loses === 6) {
                 basic.clearScreen();
@@ -68,7 +88,7 @@ namespace pps {
                 cpu = Object.values(Hands)[randint(0, 2];
                 music.play(music.stringPlayable("C D E F", 120), music.PlaybackMode.UntilDone);
                 basic.pause(700);
-                showHand(cpu);
+                pps.showHand(cpu);
                 if (hand === Hands.Rock) {
                     getWin(() => {
                         drawFace();
