@@ -11,10 +11,10 @@ namespace rps {
     /**
      * Mostra una mà, que pot ser una pedra, un paper o unes tisores
      * @param hand mà a mostrar
-     */  
+     */
     //% block="mostrar mà de %hand" weight=0
     export function showHand(hand: Hands): void {
-        basic.showLeds(hand)
+        basic.showLeds(hand);
     }
     /**
      * Inicia un joc de pedra, paper, tisores
@@ -62,72 +62,72 @@ namespace rps {
                 }
             }
         });
-        input.onButtonPressed(Button.B, () => {  
+        input.onButtonPressed(Button.B, () => {
             if (!(wins + loses === 6)) {
-                turn = false;  
-            cpu = Object.values(Hands)[randint(0, 2];  
-            music.play(music.stringPlayable("C D E F", 120), music.PlaybackMode.UntilDone);  
-            basic.pause(700);  
-            showHand(cpu);  
-            if (hand === Hands.Rock) {  
-                getWin(() => {  
-                    drawFace();  
-                    wins++;  
-                    draws++;  
-                }, () => {  
-                    basic.showIcon(IconNames.Sad);  
-                    loses++;  
-                }, () => {  
-                    basic.showIcon(IconNames.Happy);  
-                    wins++;  
-                    realWins++;  
-                });  
-            } else if (hand === Hands.Paper) {  
-                getWin(() => {  
-                    basic.showIcon(IconNames.Happy);  
-                    wins++;  
-                    realWins++;  
-                }, () => {  
-                    drawFace();  
-                    wins++;  
-                    draws++;  
-                }, () => {  
-                    basic.showIcon(IconNames.Sad);  
-                    loses++;  
-                });  
-            } else {  
-                getWin(() => {  
-                    basic.showIcon(IconNames.Sad);  
-                    loses++;  
-                }, () => {  
-                    basic.showIcon(IconNames.Happy);  
-                    wins++;  
-                    realWins++;  
-                }, () => {  
-                    drawFace();  
-                    draws++;  
-                });  
-            }  
-            turn = true;
+                turn = false;
+                cpu = Object.values(Hands)[randint(0, 2];
+                music.play(music.stringPlayable("C D E F", 120), music.PlaybackMode.UntilDone);
+                basic.pause(700);
+                showHand(cpu);
+                if (hand === Hands.Rock) {
+                    getWin(() => {
+                        drawFace();
+                        wins++;
+                        draws++;
+                    }, () => {
+                        basic.showIcon(IconNames.Sad);
+                        loses++
+                    }, () => {
+                        basic.showIcon(IconNames.Happy);
+                        wins++;
+                        realWins++;
+                    });
+                } else if (hand === Hands.Paper) {
+                    getWin(() => {
+                        basic.showIcon(IconNames.Happy);
+                            wins++;
+                        realWins++;
+                    }, () => {
+                        drawFace();
+                        wins++;
+                        draws++;
+                    }, () => {
+                        basic.showIcon(IconNames.Sad);
+                        loses++;
+                    });
+                } else {
+                    getWin(() => {
+                        basic.showIcon(IconNames.Sad);
+                        loses++;
+                    }, () => {
+                        basic.showIcon(IconNames.Happy);
+                        wins++;
+                        realWins++;
+                    }, () => {
+                        drawFace();
+                        draws++;
+                    });
+                } 
+                turn = true;
             }
-        });  
-        function getWin(rock: () => void, paper: () => void, scissors: () => void): void {  
-            if (cpu === Hands.Rock) {  
-                rock();  
-            } else if (cpu === Hands.Paper) {  
-                paper();  
-            } else {  
-                scissors();  
-            }  
-        }  
-        function drawFace(): void {  
-            basic.showLeds(`  
-                . . . . .  
-                . # . # .  
-                . . . . .  
-                # # # # #  
-                . . . . .  
-            `);  
-        }  
-    }  
-}  
+        });
+        function getWin(rock: () => void, paper: () => void, scissors: () => void): void {
+            if (cpu === Hands.Rock) {
+                rock();
+            } else if (cpu === Hands.Paper) {
+                paper();
+            } else {
+                scissors();
+            }
+        }
+        function drawFace(): void {
+            basic.showLeds(`
+                . . . . .
+                . # . # .
+                . . . . .
+                # # # # #
+                . . . . .
+            `);
+        }
+    }
+}
