@@ -4,9 +4,9 @@ namespace pps {
     export enum Hands {
         //% block="Pedra"
         Rock = images.createImage(".....\n.###.\n.###.\n.###.\n....."),
-        Paper = ".###.\n.###.\n.###.\n.###.\n.###.",
+        Paper = images.createImage(".###.\n.###.\n.###.\n.###.\n.###."),
         //% block="Tisores"
-        Scissors = "##..#\n##.#.\n..#..\n##.#.\n##..#"
+        Scissors = images.createImage("##..#\n##.#.\n..#..\n##.#.\n##..#")
     }
     /**
      * Mostra una mà, que pot ser una pedra, un paper o unes tisores
@@ -14,7 +14,7 @@ namespace pps {
      */
     //% block="mostrar mà de %hand" weight=0
     export function showHand(hand: Hands): void {
-        basic.showLeds(hand);
+        hand.showImage(0);
     }
     export function startRadio(group: number): number {
         radio.setGroup(group);
@@ -30,7 +30,9 @@ namespace pps {
                 if (hand == Hands.Rock) {
                     hand = Hands.Paper;
                 } else if (hand == Hands.Paper) {
-                    
+                    hand = Hands.Scissors;
+                } else {
+                    hand = Hands.Rock;
                 }
             }
         });
