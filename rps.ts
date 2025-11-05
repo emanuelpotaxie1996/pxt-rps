@@ -8,7 +8,7 @@ namespace rps {
     }  
     /**  
      * Mostra una mà, que pot ser una pedra, un paper o unes tisores  
-     * @param hand mà a mostrar  
+     * @param h mà a mostrar  
      */  
     //% block="mostrar mà de %h" weight=0  
     export function showHand(h: Hands): void {  
