@@ -14,7 +14,7 @@ namespace pps {
      * @param hand mà a mostrar
      */
     //% block="mostrar mà %hand" weight=0
-    export function showHand(hand: Hands) {
+    export function showHand(hand: pps.Hands): void {
         if (hand === pps.Hands.Rock) {
             basic.showLeds(".....\n.###.\n.###.\n.###.\n.....");
         } else if (hand == pps.Hands.Paper) {
@@ -37,17 +37,16 @@ namespace pps {
         let loses: number = 0;
         let draws: number = 0;
         let turn: boolean = true;
+        function gameOver(): boolean {
+            return wins + loses + draws === 6;
+        }
         input.onButtonPressed(Button.A, (): void => {
-            if (turn && !(wins + loses + draws === 6)) {
-                if (hand < 2) {
-                    hand++;
-                } else {
-                    hand = 0;
-                }
+            if (turn && !gameOver()) {
+                hand = (hand + 1) % 3;
             }
         });
         input.onButtonPressed(Button.B, (): void => {
-            if (!(wins + loses + draws === 6)) {
+            if (!gameOver()) {
                 turn = false;
                 cpu = randint(0, 2)
                 music.play(music.stringPlayable("c D E F", 120), music.PlaybackMode.UntilDone);
@@ -66,10 +65,10 @@ namespace pps {
             }
         });
         basic.forever((): void => {
-            if (turn && !(wins + loses + draws === 6)) {
+            if (turn && !gameOver()) {
                 pps.showHand(hand);
             }
-            if (wins + loses + draws === 6) {
+            if (gameOver()) {
                 if (wins >= loses || draws >= loses) {
                     basic.showString("HAS GUANYAT!", 100);
                 } else {
