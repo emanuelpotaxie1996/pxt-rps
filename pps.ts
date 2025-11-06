@@ -2,11 +2,11 @@
 //% weight=102 icon="\uf257"
 namespace pps {
     export enum Hands {
-        //% block="Pedra" color=#FF0000
+        //% block="pedra"
         Rock,
-        //% color=#00FF00
+        //% block="paper"
         Paper,
-        //% block="tisores" color=#0000FF
+        //% block="tisores"
         Scissors
     }
     /**
