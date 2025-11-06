@@ -1,13 +1,35 @@
 //% block="Pedra, paper, tisores" color=#C247FF
 //% weight=102 icon="\uf257"
 namespace pps {
+    export enum Hands {
+        //% block="Pedra" color=#FF0000
+        Rock,
+        //% color=#00FF00
+        Paper,
+        //% block="tisores" color=#0000FF
+        Scissors
+    }
+    /**
+     * Mostra una icona d'una mà, que pot ser de pedra, paper o tisores
+     * @param hand mà a mostrar
+     */
+    //% block="mostrar mà %hand" weight=0
+    export function showHand(hand: Hands) {
+        if (hand === Hands.Rock) {
+            basic.showLeds(".....\n.###.\n.###.\n.###.\n.....");
+        } else if (hand == Hands.Paper) {
+            basic.showLeds(".###.\n.###.\n.###.\n.###.\n.###.");
+        } else {
+            basic.showIcon(IconNames.Scissors);
+        }
+    }
     /**
      * Inicia un joc de pedra, paper, tisores
      * Pedra guanya a tisores, paper guanya a pedra i tisores guanyen a paper.
      * Per seleccionar una mà, premi el botó A.
      * Per acceptar la mà seleccionada, premi el botó B.
      */
-    //% block="iniciar joc"
+    //% block="iniciar joc" weight=2
     export function start(): void {
         let hand: number = 0;
         let cpu: number = 0;
@@ -15,15 +37,7 @@ namespace pps {
         let loses: number = 0;
         let draws: number = 0;
         let turn: boolean = true;
-        function show(h: number): void {
-            if (h === 0) {
-                basic.showLeds(".....\n.###.\n.###.\n.###.\n.....");
-            } else if (h === 1) {
-                basic.showLeds(".###.\n.###.\n.###.\n.###.\n.###.");
-            } else {
-                basic.showIcon(IconNames.Scissors);
-            }
-        }
+        
         input.onButtonPressed(Button.A, (): void => {
             if (turn && !(wins + loses + draws === 6)) {
                 if (hand < 2) {
@@ -37,7 +51,7 @@ namespace pps {
             if (!(wins + loses + draws === 6)) {
                 turn = false;
                 music.play(music.stringPlayable("c D E F", 120), music.PlaybackMode.UntilDone);
-                show(cpu);
+                pps.showHand(cpu);
                 if (hand === cpu) {
                     basic.showLeds(".....\n.#.#.\n.....\n#####\n.....");
                     draws++;
@@ -53,7 +67,7 @@ namespace pps {
         });
         basic.forever((): void => {
             if (turn && !(wins + loses + draws === 6)) {
-                show(hand);
+                pps.showHand(hand);
             }
             if (wins + loses + draws === 6) {
                 if (wins >= loses || draws >= loses) {
