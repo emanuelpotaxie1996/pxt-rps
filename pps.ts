@@ -63,7 +63,7 @@ namespace pps {
         });
     }
     /**
-     * Inicia un joc de pedra, paper, tisoresn contra un ordinador
+     * Inicia un joc de pedra, paper, tisores contra un ordinador
      * Pedra guanya a tisores, paper guanya a pedra i tisores guanyen a paper.
      * Per seleccionar una mà, premi el botó A.
      * Per acceptar la mà seleccionada, premi el botó B.
