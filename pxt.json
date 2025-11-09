@@ -1,7 +1,7 @@
 {
     "name": "Pedra, Paper, Tisores",
     "description": "Joc de pedra, paper, tisores per MakeCode micro:bit",
-    "version": "999.99.9",
+    "version": "9999.999.99",
     "license": "MIT",
     "dependencies": {
         "core": "*",
@@ -17,6 +17,6 @@
     "targetVersions": {
         "target": "8.0.16",
         "pxt": "12.1.8"
-    }
+    },
     "public": true
 }
