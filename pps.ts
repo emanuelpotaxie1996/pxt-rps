@@ -33,6 +33,8 @@ namespace pps {
     export function startRadio(): void {
         let hand: pps.Hands = pps.Hands.Rock;
         let turn: boolean = true;
+        let othHand: pps.Hands;
+        let othTurn: boolean;
         input.onButtonPressed(Button.A, (): void => {
             if (turn) {
                 hand = (hand + 1) % 3;
@@ -43,22 +45,25 @@ namespace pps {
             radio.sendNumber(hand);
         });
         radio.onReceivedNumber((receivedNumber: number): void => {
-            while (turn) {}
-            music.play(music.stringPlayable("c D E F", 120), music.PlaybackMode.UntilDone);
-            pps.showHand(receivedNumber);
-            turn = false;
-            if (hand === receivedNumber) {
-                basic.showLeds(".....\n.#.#.\n.....\n#####\n.....");
-            } else if ((hand + 1) % 3 === receivedNumber) {
-                basic.showIcon(IconNames.Sad);
-            } else {
-                basic.showIcon(IconNames.Happy);
-            }
-            turn = true;
+            othHand = receivedNumber;
+            othTurn = false;
         });
         basic.forever(() => {
             if (turn) {
                 pps.showHand(hand);
+            } else if (!(turn || othTurn)) {
+                music.play(music.stringPlayable("c D E F", 120), music.PlaybackMode.UntilDone);
+                pps.showHand(othHand);
+                turn = false;
+                if (hand === othHand) {
+                    basic.showLeds(".....\n.#.#.\n.....\n#####\n.....");
+                } else if ((hand + 1) % 3 === othHand) {
+                    basic.showIcon(IconNames.Sad);
+                } else {
+                    basic.showIcon(IconNames.Happy);
+                }
+                turn = true;
+                othTurn = true;
             }
         });
     }
