@@ -1,6 +1,10 @@
 {
+    "rps": "Juegos y funciones sobre el juego piedra papel o tijeras",
     "rps|block": "Piedra, papel o tijera",
     "Hands.Rock|block": "piedra",
     "Hands.Paper|block": "papel",
-    "Hands.Scissors|block": "tijeras"
+    "Hands.Scissors|block": "tijeras",
+    "Hands.start|block": "iniciar juego",
+    "Hands.startRadio|block": "iniciar juego con radio",
+    "Hands.showHand|block": "mostrar mano %hand"
 }
