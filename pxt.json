@@ -1,7 +1,7 @@
 {
     "name": "pxt-rps",
     "description": "Games and functions 'bout rock paper scissors game",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "license": "MIT",
     "dependencies": {
         "core": "*",
