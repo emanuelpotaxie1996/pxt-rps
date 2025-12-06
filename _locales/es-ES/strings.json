@@ -1,5 +1,6 @@
 {
-    "rps|block": "Piedra, papel o tijeras",
+    "rps|block": "Piedra, papel o tijera",
     "Hands.Rock|block": "piedra",
-    "Hands.Paper|block": "papel"
+    "Hands.Paper|block": "papel",
+    "Hands.Scissors|block": "tijeras"
 }
