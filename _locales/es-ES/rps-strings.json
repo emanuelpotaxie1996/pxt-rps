@@ -1,0 +1,9 @@
+{
+    "rps|block": "Piedra, papel o tijera",
+    "Hands.Rock|block": "piedra",
+    "Hands.Paper|block": "papel",
+    "Hands.Scissors|block": "tijeras",
+    "rps.start|block": "iniciar juego",
+    "rps.startRadio|block": "iniciar juego con radio",
+    "rps.showHand|block": "mostrar mano %hand"
+}
