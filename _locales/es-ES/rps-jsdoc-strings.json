@@ -1,0 +1,8 @@
+{
+    "rps": "Juegos y funciones sobre el juego piedra papel o tijeras",
+    "Hands": "El tipo Hands"
+    "rps.start": "Inicia un juego de piedra, papel o tijeras contra una computadora. Piedra gana a tijeras, papel gana a piedra y tijeras ganan a papel. Para seleccionar una mano, presione el botón A. Para aceptar, agite la micro:bit.",
+    "rps.startRadio": "Inicia un juego de piedra, papel o tijeras contra otra micro:bit. Piedra gana a tijeras, papel gana a piedra y tijeras ganan a papel. Para seleccionar una mano, presione el botón A. Para aceptar, agite la micro:bit.",
+    "rps.showHand": "Muestra el ícono de una mano, que puede ser una piedra, un papel o tijeras.",
+    "rps.showHand|param|hand": "mano a mostrar"
+}
