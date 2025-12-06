@@ -9,7 +9,9 @@ enum Hands {
     //% block="scissors"
     Scissors
 }
-
+/**
+ * Games and functions 'bout rock paper scissors game
+ */
 //% block="Pedra, paper, tisores" color=#C247FF
 //% weight=102 icon="\uf257"
 namespace rps {
