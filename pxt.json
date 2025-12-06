@@ -1,0 +1,24 @@
+{
+    "name": "pxt-rps",
+    "description": "Games and functions 'bout rock paper scissors game",
+    "version": "1.0.0",
+    "license": "MIT",
+    "dependencies": {
+        "core": "*",
+        "radio": "*"
+    },
+    "files": [
+        "README.md",
+        "LICENSE",
+        "rps.ts",
+        "_locales/es-ES/strings.json"
+    ],
+    "supportedTargets": [
+        "microbit"
+    ],
+    "targetVersions": {
+        "target": "8.1.6",
+        "pxt": "12.2.9"
+    },
+    "public": true
+}
