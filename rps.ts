@@ -12,7 +12,7 @@ enum Hands {
 
 //% block="Pedra, paper, tisores" color=#C247FF
 //% weight=102 icon="\uf257"
-namespace ppt {
+namespace rps {
     /**
      * Starts a rock paper scissors game against CPU.
      * Rock beats scissors, paper beats rock and scissors beat paper.
@@ -37,7 +37,7 @@ namespace ppt {
                 turn = false;
                 cpu = randint(0, 2);
                 music.play(music.stringPlayable("c D E F", 120), music.PlaybackMode.UntilDone);
-                ppt.showHand(cpu);
+                rps.showHand(cpu);
                 if (hand === cpu) {
                     basic.showLeds(".....\n.#.#.\n.....\n#####\n.....");
                     draws++;
@@ -98,7 +98,7 @@ namespace ppt {
                 ppt.showHand(hand);
             } else if (!(turn || othTurn)) {
                 music.play(music.stringPlayable("c D E F", 120), music.PlaybackMode.UntilDone);
-                ppt.showHand(othHand);
+                rps.showHand(othHand);
                 turn = false;
                 if (hand === othHand) {
                     basic.showLeds(".....\n.#.#.\n.....\n#####\n.....");
