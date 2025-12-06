@@ -55,7 +55,7 @@ namespace rps {
         });
         while (true) {
             if (turn && !(wins + losses + draws === 6)) {
-                ppt.showHand(hand);
+                rps.showHand(hand);
             }
             if (wins + losses + draws === 6) {
                 if (wins >= losses || draws >= losses) {
@@ -97,7 +97,7 @@ namespace rps {
         });
         basic.forever(() => {
             if (turn) {
-                ppt.showHand(hand);
+                rps.showHand(hand);
             } else if (!(turn || othTurn)) {
                 music.play(music.stringPlayable("c D E F", 120), music.PlaybackMode.UntilDone);
                 rps.showHand(othHand);
